@@ -1,2 +1,2 @@
-export { Network } from './Network';
-export { Log } from './Log';
+export { Network } from './network';
+export { Log } from './log';
