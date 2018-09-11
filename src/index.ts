@@ -1,6 +1,6 @@
 import app from './app';
 import * as http from 'http';
-import { Network , Log } from './utils';
+import { Network, Log } from './utils';
 
 class Server {
     port: boolean | string | number;
