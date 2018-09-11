@@ -47,7 +47,7 @@ npm run build
 
 ---
 #### Todo
- * Set debug configurations to allow user to debug the application
  * Add Websocket.io for real time data
+ * helper https://github.com/kube/vscode-ts-webpack-node-debug-example
 
 

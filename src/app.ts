@@ -3,6 +3,8 @@ import * as logger from 'morgan';
 import * as path from 'path';
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
+import { attachControllers } from '@decorators/express';
+import { ProjectController } from './controller/controllers/project.controller';
 
 class App {
 
@@ -39,6 +41,7 @@ class App {
             });
         });
 
+        attachControllers(router, [ ProjectController]);
         this.express.use('/', router);
     }
 

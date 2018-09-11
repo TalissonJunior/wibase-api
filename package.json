@@ -44,6 +44,8 @@
     "url": ""
   },
   "dependencies": {
+    "@decorators/di": "^1.0.2",
+    "@decorators/express": "^2.3.0",
     "body-parser": "^1.18.3",
     "cookie-parser": "^1.4.3",
     "ejs": "^2.6.1",

@@ -2,12 +2,21 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es5",
-        "outDir": "dist"
+        "outDir": "dist",
+        "sourceMap": true,
+        "declaration": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "typeRoots": ["node_modules/@types"],
     },
     "exclude": [
         "node_modules",
         "dist",
         "release"
     ],
-    "types": ["node"]
+    "types": [
+        "node"
+    ]
 }
