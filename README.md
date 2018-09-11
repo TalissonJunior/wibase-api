@@ -34,8 +34,6 @@ npm start
 
 **Todo**
 ---
- * Move ./src/public folder to dist when building the application
- * Compile the scss into css inside ./src/public folder
  * Set debug configurations to allow user to debug the application
  * Add Websocket.io for real time data
 
