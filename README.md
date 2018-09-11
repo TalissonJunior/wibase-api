@@ -1,3 +1,4 @@
+![Build Status](https://travis-ci.org/TalissonJunior/wibase-api.svg?branch=master)
 
 # WIBASE-API
 
