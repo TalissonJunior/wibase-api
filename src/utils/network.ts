@@ -1,6 +1,5 @@
 import * as os from 'os';
 
-
 export class Network {
     interfaces = os.networkInterfaces();
 
