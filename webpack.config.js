@@ -1,19 +1,22 @@
-const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: `./src/index.ts`,
+    entry: ['./src/index.ts', './src/scss/app.scss'],
     target: 'node',
+    node: {
+        __dirname: false
+    },
     externals: [
         /^[a-z\-0-9]+$/ // Ignore node_modules folder
     ],
-    output: {
-        filename: 'bundle.js',
-        path: path.resolve(__dirname, './dist'),
-        libraryTarget: "commonjs"
-    },
+    plugins: [
+        new CopyWebpackPlugin([
+            { from: './src/views/**/*', to: 'views/', flatten: true },
+        ])
+    ],
     resolve: {
         // Add in `.ts` and `.tsx` as a resolvable extension.
-        extensions: ['.ts'],
+        extensions: ['.ts', '.scss'],
         modules: [
             './node_modules',
             'node_modules'
@@ -23,7 +26,7 @@ module.exports = {
         rules: [
             {
                 // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
-                test: /\.tsx?$/,
+                test: /\.ts$/,
                 use: [
                     {
                         loader: 'ts-loader',
@@ -31,14 +34,25 @@ module.exports = {
                 ]
             },
             {
-                // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
                 test: /\.scss$/,
                 use: [
                     {
-                        loader: 'css-loader', // Translate CSS into CommonJS
+                        loader: 'file-loader',
+                        options: {
+                            name: 'css/[name].bundle.css',
+                        }
                     },
                     {
-                        loader: 'sass-loader', // Compiles Sass to CSS
+                        loader: 'extract-loader'
+                    },
+                    {
+                        loader: 'css-loader?-url'
+                    },
+                    {
+                        loader: 'postcss-loader'
+                    },
+                    {
+                        loader: 'sass-loader'
                     }
                 ]
             },

@@ -1,5 +1,5 @@
 {
-  "name": "wibase-service",
+  "name": "wibase-api",
   "version": "1.0.0",
   "description": "A backend as service application, that managers project, using the database tha5 user configs",
   "private": true,
@@ -11,7 +11,7 @@
     "build-dev": "node node_modules/webpack/bin/webpack.js --config buildtools/webpack.dev.js",
     "build": "node node_modules/webpack/bin/webpack.js --config buildtools/webpack.prod.js",
     "postinstall": "node node_modules/typings/dist/bin.js install --overwrite",
-    "start": "node dist/bundle.js"
+    "start": "node .tmp/bundle.js"
   },
   "main": "",
   "keywords": [
@@ -23,7 +23,14 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^10.9.4",
+    "autoprefixer": "^9.1.5",
+    "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
+    "extract-loader": "^3.0.0",
+    "file-loader": "^2.0.0",
+    "node-sass": "^4.9.3",
+    "postcss-cli": "^6.0.0",
+    "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "ts-loader": "^5.0.0",
     "typescript": "^3.0.3",

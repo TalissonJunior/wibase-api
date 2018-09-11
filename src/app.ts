@@ -16,9 +16,9 @@ class App {
     }
 
     config(): void {
-
+        
         // view engine setup
-        this.express.set('views', './src/public/views/');
+        this.express.set('views', path.join(__dirname, 'views'));
         this.express.set('view engine', 'ejs');
 
         this.express.use(logger('dev'));
@@ -26,7 +26,8 @@ class App {
         this.express.use(bodyParser.urlencoded({ extended: false }));
         this.express.use(cookieParser());
 
-        this.express.use('/public', express.static(path.join(__dirname, 'public')));
+        this.express.use('/css', express.static(path.join(__dirname, 'css')));
+        this.express.use('/views', express.static(path.join(__dirname, 'views')));
     }
 
     routes(): void {

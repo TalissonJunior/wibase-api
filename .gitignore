@@ -1,5 +1,6 @@
 .vscode/
 dist/
+.tmp/
 typings/
 node_modules/
 .DS*
