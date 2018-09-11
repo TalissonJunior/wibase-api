@@ -1,0 +1,46 @@
+{
+  "name": "wibase-service",
+  "version": "1.0.0",
+  "description": "A backend as service application, that managers project, using the database tha5 user configs",
+  "private": true,
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "serve": "node node_modules/webpack/bin/webpack.js --config buildtools/webpack.dev.js --watch",
+    "build-dev": "node node_modules/webpack/bin/webpack.js --config buildtools/webpack.dev.js",
+    "build": "node node_modules/webpack/bin/webpack.js --config buildtools/webpack.prod.js",
+    "postinstall": "node node_modules/typings/dist/bin.js install --overwrite",
+    "start": "node dist/bundle.js"
+  },
+  "main": "",
+  "keywords": [
+    "Wibase",
+    "TypeScript",
+    "Baas"
+  ],
+  "author": "Talisson Junior",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^10.9.4",
+    "css-loader": "^1.0.0",
+    "sass-loader": "^7.1.0",
+    "ts-loader": "^5.0.0",
+    "typescript": "^3.0.3",
+    "typings": "^2.1.1",
+    "webpack": "^4.17.2",
+    "webpack-cli": "^3.1.0",
+    "webpack-merge": "^4.1.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0"
+  }
+}
