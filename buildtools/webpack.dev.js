@@ -10,8 +10,5 @@ module.exports = merge(common, {
         devtoolModuleFilenameTemplate: '[absolute-resource-path]'
     },
     mode: 'development',
-    devtool: 'cheap-source-map',
-    devServer: {
-        contentBase: '../.tmp'
-    }
+    devtool: 'inline-source-map'
 });

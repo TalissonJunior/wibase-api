@@ -48,6 +48,4 @@ npm run build
 ---
 #### Todo
  * Add Websocket.io for real time data
- * helper https://github.com/kube/vscode-ts-webpack-node-debug-example
-
 

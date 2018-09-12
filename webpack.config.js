@@ -1,7 +1,10 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-    entry: ['./src/index.ts', './src/scss/app.scss'],
+    entry: [
+        './src/index.ts', 
+        './src/scss/app.scss'
+    ],
     target: 'node',
     node: {
         __dirname: false
