@@ -6,7 +6,7 @@ A service that provides and handles the logic for Wibase , this project is writi
 
 
 ## Live reloading and debug
-<img src="https://github.com/TalissonJunior/wibase-api/blob/master/.github/img/debug.png" alt="Live reload and debug the application">
+<img src="https://github.com/TalissonJunior/wibase-api/blob/master/.github/img/debug.gif" alt="Live reload and debug the application">
 
 ## Development Hints for working on wibase-api
 
