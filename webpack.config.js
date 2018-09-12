@@ -3,7 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
     entry: [
         './src/index.ts', 
-        './src/scss/app.scss'
+        './src/public/scss/app.scss'
     ],
     target: 'node',
     node: {
@@ -14,7 +14,7 @@ module.exports = {
     ],
     plugins: [
         new CopyWebpackPlugin([
-            { from: './src/views/**/*', to: 'views/', flatten: true },
+            { from: './src/public/views/**/*', to: 'views/', flatten: true },
         ])
     ],
     resolve: {

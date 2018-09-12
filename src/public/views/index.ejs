@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+    rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="/css/app.bundle.css">
+  <title>
+    <%= title %>
+  </title>
+</head>
+
+<body>
+
+  <div class="page-wrapper">
+
+    <!-- ******Header****** -->
+    <header class="header text-center">
+      <div class="container">
+
+        <div class="branding">
+          <h1 class="logo">
+            <span aria-hidden="true" class="icon_documents_alt icon"></span>
+            <span class="text-highlight">
+              <%= title %></span>
+            <span class="text-bold">Api</span>
+          </h1>
+        </div>
+
+        <div class="tagline">
+          <p>A backend as service for Wibase</p>
+          <p>Designed for developers</p>
+        </div>
+
+        <div class="social-container">
+          <div class="github-btn mb-2">
+            <a class="github-button" href="https://github.com/TalissonJunior/wibase-api" data-size="large" aria-label="Star wibase-api on GitHub">Star
+              @wibase-api</a>
+            <a class="github-button" href="https://github.com/TalissonJunior/wibase-api" data-size="large" aria-label="Follow @wibase-api on GitHub">Follow
+              @wibase-api</a>
+          </div>
+        </div>
+
+    </header>
+    <!--//header-->
+
+    <section class="cards-section text-center">
+      <div class="container">
+        <h2 class="title">About</h2>
+        <div class="intro">
+          <p>Welcome to Wibase api, <strong>a backend as service api application</strong> that handles all the logic and security for Wibase, with wibase you can create as many project as you want
+            indepent of that database you choose, we currently support <br> <strong>"Mysql, Sql Server and Postgress"</strong>.
+          </p>
+          <div class="cta-container">
+            <a class="btn btn-primary btn-cta" href="#"
+              target="_blank"><i class="fas fa-cube"></i> Go to Wibase Website</a>
+          </div>
+        </div>
+
+        <!--cards-->
+        <div id="cards-wrapper" class="cards-wrapper row">
+          <% items.forEach(function(item){ %>
+          <div class="item <%- item.colorClass %> col-lg-4 col-6">
+            <div class="item-inner">
+              <div class="icon-holder">
+                <i class="icon <%- item.icon %>"></i>
+              </div>
+              <h3 class="title">
+                <%- item.title %>
+              </h3>
+              <p class="intro">
+                <%- item.description %>
+              </p>
+              <a class="link" href="#"><span></span></a>
+            </div>
+            <!--//item-inner-->
+          </div>
+          <% }); %>
+        </div>
+        <!--//cards-->
+
+      </div>
+      <!--//container-->
+    </section>
+  </div>
+  <!--//page-wrapper-->
+
+  <footer class="footer text-center">
+    <div class="container">
+      <small class="copyright">Designed by Wibase contributors</a> for developers</small>
+    </div>
+    <!--//container-->
+  </footer>
+  <!--//footer-->
+
+  <!-- Place this tag in your head or just before your close body tag. -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js" integrity="sha384-BtvRZcyfv4r0x/phJt9Y9HhnN5ur1Z+kZbKVgzVBAlQZX4jvAuImlIz+bG7TS00a"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
