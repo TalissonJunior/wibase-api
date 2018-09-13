@@ -1,0 +1,1 @@
+export { CreateUpdateDate } from './createUpdateDate.decorator';

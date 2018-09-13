@@ -4,6 +4,10 @@ import * as path from 'path';
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
 import * as expressPromise from 'express-promise';
+import * as helmet from 'helmet';
+import * as cors from 'cors';
+import * as compression from 'compression';
+
 import { attachControllers } from '@decorators/express';
 import { ProjectController, ViewController } from './controller/controllers';
 
@@ -26,13 +30,26 @@ class App {
 
         this.express.use(logger('dev'));
         this.express.use(bodyParser.json());
-        this.express.use(bodyParser.urlencoded({ extended: false }));
+        this.express.use(bodyParser.urlencoded({ extended: true }));
         this.express.use(cookieParser());
         this.express.use(expressPromise());
+        this.express.use(compression());
+        this.express.use(helmet());
+        this.express.use(cors());
 
         // static resources
-        this.express.use('/css', express.static(path.join(__dirname, 'css')));  
+        this.express.use('/css', express.static(path.join(__dirname, 'css')));
         this.express.use('/views', express.static(path.join(__dirname, 'views')));
+
+        // cors
+        this.express.use((req, res, next) => {
+            res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+            res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+            res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials');
+            res.header('Access-Control-Allow-Credentials', 'true');
+            res.header("Access-Control-Allow-Headers", "Authorization");
+            next();
+        });
     }
 
     routes(): void {

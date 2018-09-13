@@ -8,7 +8,7 @@ export class BaseRepository {
     private _connection: mysql.Connection;
     private _database: Database = new Database();
 
-    constructor(private connectionString?: string) {}
+    constructor(private connectionString?: string) { }
 
     createConnection() {
         if (this.connectionString) {
@@ -37,14 +37,13 @@ export class BaseRepository {
     /**
      * 
      * @param sql string of sql, don´t forget to use ? to identifier params, this will prevent sql injection  
-     * @param params array of params
-     * @example sql -> SELECT * FROM users WHERE id = ? , name = ? ; params-> [id, '1']
+     * @param params array of params, object
+     * @example sql -> SELECT * FROM users WHERE id = ? , name = ? ; params-> [id, '1'], { id: 1}
      */
-    query(sql: string, params: Array<string | number>): Promise<DatabaseResponse> {
-
-        this.createConnection();
+    query(sql: string, params: any): Promise<DatabaseResponse> {
 
         return Promise((resolve, reject) => {
+            this.createConnection();
 
             this._connection.query(sql, params, (err: mysql.MysqlError, rows: any[], fields: mysql.FieldInfo[]) => {
                 this.closeConnection();
@@ -58,4 +57,5 @@ export class BaseRepository {
 
         });
     }
+
 }

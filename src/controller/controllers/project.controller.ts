@@ -1,6 +1,7 @@
 import { Response, Controller, Get, Delete, Put, Post, Body, Params } from '@decorators/express';
 import { ProjectBusiness } from '../../business/rules/project.business';
 import { ProjectRepository } from '../../repository/repositories/project.repository';
+import { Project } from '../../models';
 
 @Controller('/api/wibase/project')
 export class ProjectController {
@@ -10,22 +11,22 @@ export class ProjectController {
     this.business = new ProjectBusiness(new ProjectRepository());
   }
 
-  // @description List all projects
+  // List all projects
   @Get('/')
   ListAll(@Response() res) {
-    res.send(this.business.ListAll());
+    res.send(this.business.listAll());
   }
 
-  // @description Get project by id
+   // Get project by id
   @Get('/:id')
   GetByID(@Response() res, @Params('id') id: number) {
     res.send("value");
   }
 
-  // @description Create new project
+  // Create new project
   @Post('/')
-  Insert(@Response() res, @Body() model: any) {
-    res.send({ model: 'model' });
+  Insert(@Response() res, @Body() model: Project) {
+    res.send(this.business.Insert(model));
   }
 
   // @description Update project by id
