@@ -1,5 +1,3 @@
-
-
 // Repository
 interface DatabaseResponse {
     rows: Array<any>;

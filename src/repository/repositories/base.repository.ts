@@ -1,7 +1,7 @@
 import * as mysql from 'mysql';
-import { Configurations } from '../../configurations/configurations';
 import { Promise } from 'q';
 import { Database } from '../database/database';
+import { Configurations } from '../../configurations/configurations';
 
 export class BaseRepository {
 

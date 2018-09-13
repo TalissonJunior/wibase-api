@@ -1,15 +1,11 @@
-var appSettings = require('./appSettings.json');
+import { AppSettings } from "./appsettings";
+
 
 export class Configurations {
 
-    constructor() {
-
-        if(!appSettings){
-            throw new Error('Could not find "appsettings.json" in "configurations" folder.')
-        }
-    }
+    constructor() {}
 
     GetConnectionString(connectionStringName: string): object {
-        return appSettings['connectionStrings'][connectionStringName];
+        return AppSettings.connectionStrings[connectionStringName];
     }
 }
