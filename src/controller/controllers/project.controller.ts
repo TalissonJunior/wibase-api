@@ -1,14 +1,19 @@
 import { Response, Controller, Get, Delete, Put, Post, Body, Params } from '@decorators/express';
+import { ProjectBusiness } from '../../business/rules/project.business';
+import { ProjectRepository } from '../../repository/repositories/project.repository';
 
-@Controller('/api/project')
+@Controller('/api/wibase/project')
 export class ProjectController {
 
-  constructor() { }
+  business: ProjectBusiness;
+  constructor() { 
+    this.business = new ProjectBusiness(new ProjectRepository());
+  }
 
   // @description List all projects
   @Get('/')
   ListAll(@Response() res) {
-    res.send(["value1", "value2"]);
+    res.send(this.business.ListAll());
   }
 
   // @description Get project by id

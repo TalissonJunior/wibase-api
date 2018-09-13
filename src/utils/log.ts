@@ -1,4 +1,4 @@
-import { Colors } from "../enums/colors";
+import { Colors } from "../enums";
 
 export class Log {
 

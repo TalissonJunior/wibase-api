@@ -3,6 +3,7 @@ import * as logger from 'morgan';
 import * as path from 'path';
 import * as bodyParser from 'body-parser';
 import * as cookieParser from 'cookie-parser';
+import * as expressPromise from 'express-promise';
 import { attachControllers } from '@decorators/express';
 import { ProjectController, ViewController } from './controller/controllers';
 
@@ -27,8 +28,10 @@ class App {
         this.express.use(bodyParser.json());
         this.express.use(bodyParser.urlencoded({ extended: false }));
         this.express.use(cookieParser());
+        this.express.use(expressPromise());
 
-        this.express.use('/css', express.static(path.join(__dirname, 'css')));
+        // static resources
+        this.express.use('/css', express.static(path.join(__dirname, 'css')));  
         this.express.use('/views', express.static(path.join(__dirname, 'views')));
     }
 
