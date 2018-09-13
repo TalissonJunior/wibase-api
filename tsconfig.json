@@ -16,5 +16,7 @@
     "types": [
         "node"
     ],
-    "typeRoots": [ "./src/typings.d.ts" ]
+    "typeRoots": [
+        "./src/typings.d.ts"
+    ]
 }
