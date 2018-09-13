@@ -1,4 +1,4 @@
-import * as appSettings from './appSettings.json';
+var appSettings = require('./appSettings.json');
 
 export class Configurations {
 
