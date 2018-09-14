@@ -1,1 +1,1 @@
-export { CreateUpdateDate } from './createUpdateDate.decorator';
+export { CreateUpdateDate } from './date.decorator';
