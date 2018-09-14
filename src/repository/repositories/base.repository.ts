@@ -34,9 +34,8 @@ export class BaseRepository {
         return this._connection;
     }
 
-    _removeWibaseModelGeneratedFields(model) {
+    _removeWibaseModelGeneratedFields(model: any) {
 
-        // Clone
         var clone = JSON.parse(JSON.stringify(model));
 
         delete clone['$table'];
@@ -53,6 +52,13 @@ export class BaseRepository {
         return clone;
     }
 
+    /**
+     * 
+     * @param model the object to insert
+     * @param transactionRows this are the inserted results, it will be update automaticly
+     * @param isRoot Set to true only once when calling this method, used to detect if it is the root parend object to finish callback
+     * @param callback callback function
+     */
     _handleTransaction(model: any, transactionRows: any, isRoot: boolean, callback: Function) {
 
         if (model['$fk'] && transactionRows) {
@@ -102,13 +108,13 @@ export class BaseRepository {
             this.createConnection();
 
             if (model['$insert_mode'] == 'transaction') {
-                this._connection.beginTransaction((err) => {
+                this._connection.beginTransaction((err: mysql.MysqlError) => {
 
                     if (err) {
                         reject(this._storage.handleError(err));
                     }
 
-                    this._handleTransaction(model, null, true, (transactionError: mysql.MysqlError, rows: any, fields: mysql.FieldInfo[]) => {
+                    this._handleTransaction(model, null, true, (transactionError: mysql.MysqlError, rows: any[], fields: mysql.FieldInfo[]) => {
 
                         if (transactionError) {
                             this._connection.rollback(() => {
@@ -116,7 +122,7 @@ export class BaseRepository {
                             });
                         }
 
-                        this._connection.commit((err) => {
+                        this._connection.commit((err: mysql.MysqlError) => {
 
                             if (err) {
                                 this._connection.rollback(() => {
