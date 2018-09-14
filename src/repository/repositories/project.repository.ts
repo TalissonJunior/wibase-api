@@ -16,12 +16,7 @@ export class ProjectRepository extends BaseRepository {
         })
     }
 
-    Insert(model: Project): Q.Promise<any> {
-        return this.query('INSERT INTO project SET ?', model).then((response) => {
-            return response.rows;
-        })
-        .catch((error: BaseErrorResponse) => {
-            return error;
-        })
+    Insert(model: Project){
+       this.handleInsert(model);
     }
 }

@@ -1,7 +1,7 @@
 import { MysqlError } from "mysql";
-import { DatabaseErrors, ErrorResponseCode } from "../../enums";
+import { DatabaseErrors, ErrorResponseCode } from "../../business/enums";
 
-export class Database {
+export class Storage {
 
     constructor() { }
 

@@ -3,7 +3,7 @@ import { ProjectBusiness } from '../../business/rules/project.business';
 import { ProjectRepository } from '../../repository/repositories/project.repository';
 import { Project } from '../../models';
 
-@Controller('/api/wibase/project')
+@Controller('/api/wibase/console/project')
 export class ProjectController {
 
   business: ProjectBusiness;

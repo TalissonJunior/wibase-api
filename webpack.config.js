@@ -15,7 +15,6 @@ module.exports = {
     plugins: [
         new CopyWebpackPlugin([
             { from: './src/public/views/**/*', to: 'views/', flatten: true },
-            { from: './src/configurations/**/*.json', to: '', flatten: true },
         ])
     ],
     resolve: {
