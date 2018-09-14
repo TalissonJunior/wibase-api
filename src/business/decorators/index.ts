@@ -1,1 +1,1 @@
-export { CreateUpdateDate } from './date.decorator';
+export { CreateAtUpdateAtDateField, UpdateAtDateField } from './date.decorator';

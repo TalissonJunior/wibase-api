@@ -1,7 +1,7 @@
 import * as shortid from 'shortid';
 import { ProjectRepository } from "../../repository/repositories/project.repository";
 import { Project } from "../../models";
-import { CreateUpdateDate } from '../decorators';
+import { CreateAtUpdateAtDateField } from '../decorators';
 
 export class ProjectBusiness {
 
@@ -11,7 +11,7 @@ export class ProjectBusiness {
        return this.repository.ListAll();
     }
 
-    @CreateUpdateDate
+    @CreateAtUpdateAtDateField
     Insert(model: Project): Q.Promise<any>  {
 
         model.public_id = model.name + shortid.generate();
