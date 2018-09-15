@@ -98,10 +98,18 @@ export class BaseRepository {
     }
 
     /**
-     * @description It handles any insert, a simple one or a complex one , based on the model passed
-     * @param model 
+     * @description A insert method that can either use transaction method or a simple query to perform the insert,
+     * it will depend if the model is either a complex or simple model. A can complex model is when you have to
+     * perfom multiples inserts that depends on the id of the previous insert.
+     * 
+     * @example Complex model => 
+     * { name: 'teste' , $table: 'project', category: { name: 'web', $table: 'category' }}
+     * 
+     * Simple model =>  
+     * { name: 'teste' , $table: 'project'}
+     * @param model model to perfom the insert
      */
-    handleInsert(model: any): Promise<StorageResponse> {
+    insert(model: any): Promise<StorageResponse> {
 
         return Promise((resolve, reject) => {
 
@@ -138,7 +146,9 @@ export class BaseRepository {
             }
             else {
 
-                this._connection.query('INSERT INTO project SET ?', model, (err: mysql.MysqlError, rows: any[], fields: mysql.FieldInfo[]) => {
+                var cleanModel = this._removeWibaseModelGeneratedFields(model);
+
+                this._connection.query('INSERT INTO ?? SET ?', [model['$table'], cleanModel], (err: mysql.MysqlError, rows: any[], fields: mysql.FieldInfo[]) => {
                     this.closeConnection();
 
                     if (err) {
@@ -154,10 +164,16 @@ export class BaseRepository {
 
     /**
      * 
-     * @param sql string of sql, don´t forget to use ? to identifier params, this will prevent sql injection  
+     * @param sql string of sql
      * @param params array of params, object
-     * @example sql -> SELECT * FROM users WHERE id = ? , name = ? ; params-> [id, '1'], { id: 1}
-     */
+     * @example sql => 
+     * #1 'SELECT * FROM users WHERE id = ? , name = ?'
+     * #2 'SELECT * FROM users WHERE ?'
+     *   
+     * params => 
+     * #1 [1, 'teste']     
+     * #2 { id: 1 , name: 'teste'}
+     * */
     query(sql: string, params: any): Promise<StorageResponse> {
 
         return Promise((resolve, reject) => {

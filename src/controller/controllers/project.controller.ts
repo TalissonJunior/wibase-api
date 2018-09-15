@@ -13,8 +13,8 @@ export class ProjectController {
 
   // List all projects
   @Get('/')
-  ListAll(@Response() res) {
-    res.send(this.business.listAll());
+  GetAll(@Response() res) {
+    res.send(this.business.GetAll());
   }
 
    // Get project by id

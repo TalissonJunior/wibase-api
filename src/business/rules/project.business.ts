@@ -8,8 +8,8 @@ export class ProjectBusiness {
 
     constructor(private repository: ProjectRepository){ }
 
-    listAll(): Q.Promise<any> {
-       return this.repository.ListAll();
+    GetAll(): Q.Promise<any> {
+       return this.repository.GetAll();
     }
 
     @CreateAtUpdateAtDateField
@@ -17,6 +17,6 @@ export class ProjectBusiness {
 
         model.public_id = model.name + shortid.generate();
 
-        return this.repository.handleInsert(model);
+        return this.repository.insert(model);
     }
 }
