@@ -67,7 +67,7 @@ export class BaseRepository {
      * @param isRoot Used to detect if it is the root parent object "the first insert", so it can call the callback function.
      * @param callback callback function
      */
-    _handleTransaction(model: any, transactionRows: any, isRoot: boolean, callback: Function) {
+    _handleTransaction(model: any, transactionRows: any, isRoot: boolean, callback: mysql.queryCallback) {
 
         if (model['$fk'] && transactionRows) {
             model[model['$fk']] = transactionRows.insertId;

@@ -1,8 +1,7 @@
 import * as shortid from 'shortid';
-import { ProjectRepository } from "../../repository/repositories/project.repository";
+import { ProjectRepository } from "../../repository/repositories";
 import { Project } from "../../models";
 import { CreateAtUpdateAtDateField } from '../decorators';
-import { Promise } from 'q';
 
 export class ProjectBusiness {
 

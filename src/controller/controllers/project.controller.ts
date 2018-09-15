@@ -1,6 +1,6 @@
 import { Response, Controller, Get, Delete, Put, Post, Body, Params } from '@decorators/express';
-import { ProjectBusiness } from '../../business/rules/project.business';
-import { ProjectRepository } from '../../repository/repositories/project.repository';
+import { ProjectBusiness } from '../../business/rules';
+import { ProjectRepository } from '../../repository/repositories';
 import { Project } from '../../models';
 
 @Controller('/api/wibase/console/project')

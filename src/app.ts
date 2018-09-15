@@ -9,7 +9,7 @@ import * as cors from 'cors';
 import * as compression from 'compression';
 
 import { attachControllers } from '@decorators/express';
-import { ProjectController, ViewController } from './controller/controllers';
+import { ProjectController, ViewController, CategoryController } from './controller/controllers';
 
 class App {
 
@@ -55,7 +55,7 @@ class App {
     routes(): void {
         var router: express.Router = express.Router();
 
-        attachControllers(router, [ViewController, ProjectController]);
+        attachControllers(router, [ViewController, ProjectController, CategoryController]);
         this.express.use('/', router);
     }
 

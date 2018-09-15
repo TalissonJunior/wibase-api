@@ -2,7 +2,7 @@
 /**
  * @description@description Create an 'update date' and 'create_date' field 
  * in the object and its children arguments, 
- * that that this decorator is being applied
+ * that this decorator is being applied
  */
 export function CreateAtUpdateAtDateField(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const originalMethod = descriptor.value;
@@ -30,7 +30,7 @@ export function CreateAtUpdateAtDateField(target: any, propertyKey: string, desc
 
 /**
  * @description Create an 'update date' field in the object and its children arguments, 
- * that that this decorator is being applied.
+ * that this decorator is being applied.
  */
 export function UpdateAtDateField(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const originalMethod = descriptor.value;
@@ -53,7 +53,6 @@ export function UpdateAtDateField(target: any, propertyKey: string, descriptor: 
 
     return descriptor;
 }
-
 
 /**
  * @description  Create an 'create_date' and 'update_date' field 
