@@ -11,11 +11,12 @@ export class BaseRepository {
 
     constructor(private connectionString?: mysql.ConnectionConfig) { }
 
+    /**
+     * @description Creates and open the connection.
+     */
     createConnection() {
         if (this.connectionString) {
-
             this._connection = mysql.createConnection(this.connectionString);
-
         }
         else {
             this.connectionString = new Configurations().GetConnectionString('DefaultConnection');
@@ -34,6 +35,12 @@ export class BaseRepository {
         return this._connection;
     }
 
+    /**
+     * @description Cleans the wibase properties used to handle some business logics,
+     *  like '$table', '$insert_mode', '$fk' properties and childs that are a instance of object.
+     * @param model 
+     * @returns A clean clone of the model
+     */
     _removeWibaseModelGeneratedFields(model: any) {
 
         var clone = JSON.parse(JSON.stringify(model));
@@ -53,10 +60,11 @@ export class BaseRepository {
     }
 
     /**
-     * 
+     * @description Perform a complex insert, it will save the parent object id
+     *  on the child object '$fk' property value if exists, perform a insert and do the process all over again.
      * @param model the object to insert
-     * @param transactionRows this are the inserted results, it will be update automaticly
-     * @param isRoot Set to true only once when calling this method, used to detect if it is the root parend object to finish callback
+     * @param transactionRows the result
+     * @param isRoot Used to detect if it is the root parent object "the first insert", so it can call the callback function.
      * @param callback callback function
      */
     _handleTransaction(model: any, transactionRows: any, isRoot: boolean, callback: Function) {
@@ -99,7 +107,7 @@ export class BaseRepository {
 
     /**
      * @description A insert method that can either use transaction method or a simple query to perform the insert,
-     * it will depend if the model is either a complex or simple model. A can complex model is when you have to
+     * it will depend if the model is either a complex or simple model. A complex model is when you have to
      * perfom multiples inserts that depends on the id of the previous insert.
      * 
      * @example Complex model => 
@@ -190,6 +198,7 @@ export class BaseRepository {
             });
 
         });
+
     }
 
 }

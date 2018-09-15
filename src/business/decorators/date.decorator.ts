@@ -1,6 +1,8 @@
 
 /**
- * @description This decorator creates a 'create_date' and 'update_date' fields, on the method object passed;
+ * @description@description Create an 'update date' and 'create_date' field 
+ * in the object and its children arguments, 
+ * that that this decorator is being applied
  */
 export function CreateAtUpdateAtDateField(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const originalMethod = descriptor.value;
@@ -25,8 +27,10 @@ export function CreateAtUpdateAtDateField(target: any, propertyKey: string, desc
     return descriptor;
 }
 
+
 /**
- * @description This decorator creates the 'update_date' fields, on the method object passed
+ * @description Create an 'update date' field in the object and its children arguments, 
+ * that that this decorator is being applied.
  */
 export function UpdateAtDateField(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
     const originalMethod = descriptor.value;
@@ -51,11 +55,16 @@ export function UpdateAtDateField(target: any, propertyKey: string, descriptor: 
 }
 
 
+/**
+ * @description  Createa an 'create_date' and 'update_date' field 
+ * to the object childs that have '$table' property on it.
+ * @param object 
+ */
 function handleTableCreateAtUpdateAtChildFields(object: Object) {
 
     for (var prop in object) {
 
-        // Childs table must have the property '$table' in order to add 'created_date' and 'update_date' fields;
+        // Childs table must have the property '$table' in order to create 'created_date' and 'update_date' fields.
         if (object['$table'] && (!object['create_date'] && !object['update_date'])) {
             object['create_date'] = new Date().toLocaleString();
             object['update_date'] = new Date().toLocaleString();
@@ -68,11 +77,16 @@ function handleTableCreateAtUpdateAtChildFields(object: Object) {
     }
 }
 
+/**
+ * @description Create an 'update_date' field to the object childs 
+ * that have '$table' property on it;
+ * @param object 
+ */
 function handleTableUpdateAtChildFields(object: Object) {
 
     for (var prop in object) {
 
-        // Childs table must have the property '$table' in order to add 'update_date' field;
+        // Childs table must have the property '$table' in order to create 'update_date' field;
         if (object['$table'] && !object['update_date']) {
             object['update_date'] = new Date().toLocaleString();
         }
