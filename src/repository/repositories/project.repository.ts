@@ -7,7 +7,7 @@ export class ProjectRepository extends BaseRepository {
         super();
     }
 
-    ListAll(): Q.Promise<any> {
+    GetAll(): Q.Promise<any> {
         return this.query('SELECT * FROM project', null).then((response) => {
             return response.rows;
         })
@@ -17,6 +17,6 @@ export class ProjectRepository extends BaseRepository {
     }
 
     Insert(model: Project){
-       this.handleInsert(model);
+       this.insert(model);
     }
 }
