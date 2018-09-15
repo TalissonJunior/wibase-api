@@ -13,7 +13,7 @@ export function CreateAtUpdateAtDateField(target: any, propertyKey: string, desc
             if (arg instanceof Object) {
                 arg.create_date = new Date().toLocaleString();
                 arg.update_date = new Date().toLocaleString();
-                handleTableCreateAtUpdateAtChildFields(arg);
+                _handleTableCreateAtUpdateAtChildFields(arg);
             }
         });
 
@@ -40,7 +40,7 @@ export function UpdateAtDateField(target: any, propertyKey: string, descriptor: 
         args.forEach((arg) => {
             if (arg instanceof Object) {
                 arg.update_date = new Date().toLocaleString();
-                handleTableUpdateAtChildFields(arg);
+                _handleTableUpdateAtChildFields(arg);
             }
         });
 
@@ -56,11 +56,11 @@ export function UpdateAtDateField(target: any, propertyKey: string, descriptor: 
 
 
 /**
- * @description  Createa an 'create_date' and 'update_date' field 
+ * @description  Create an 'create_date' and 'update_date' field 
  * to the object childs that have '$table' property on it.
  * @param object 
  */
-function handleTableCreateAtUpdateAtChildFields(object: Object) {
+function _handleTableCreateAtUpdateAtChildFields(object: Object) {
 
     for (var prop in object) {
 
@@ -72,7 +72,7 @@ function handleTableCreateAtUpdateAtChildFields(object: Object) {
 
         if (object[prop] instanceof Object) {
             object['$insert_mode'] = 'transaction'; // This will tell the storage to insert as a transaction because of its dependencies
-            handleTableCreateAtUpdateAtChildFields(object[prop]);
+            _handleTableCreateAtUpdateAtChildFields(object[prop]);
         }
     }
 }
@@ -82,7 +82,7 @@ function handleTableCreateAtUpdateAtChildFields(object: Object) {
  * that have '$table' property on it;
  * @param object 
  */
-function handleTableUpdateAtChildFields(object: Object) {
+function _handleTableUpdateAtChildFields(object: Object) {
 
     for (var prop in object) {
 
@@ -93,7 +93,7 @@ function handleTableUpdateAtChildFields(object: Object) {
 
         if (object[prop] instanceof Object) {
             object['$update_mode'] = 'transaction'; // This will tell the storage to insert as a transaction because of its dependencies
-            handleTableUpdateAtChildFields(object[prop]);
+            _handleTableUpdateAtChildFields(object[prop]);
         }
     }
 }
