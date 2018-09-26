@@ -4,13 +4,6 @@
 
 A backend as service application, writting in Nodejs + Typescript + MongoDB
 
-
-## Live reloading and debug
-<img src="https://github.com/TalissonJunior/wibase-api/blob/master/.github/img/debug.gif" alt="Live reload and debug the application">
-
-## Development Hints for working on wibase-api
-
-
 ### Prerequisites
 
 Node.js 
