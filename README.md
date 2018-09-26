@@ -2,7 +2,7 @@
 
 # WIBASE-API
 
-A backend as service application, writting in Nodejs + Typescript + MongoDB
+A backend as service application, writting in [Nodejs](https://nodejs.org/en/) using [Typescript](https://www.typescriptlang.org/) + [Expressjs](http://expressjs.com/) + [Websocket](https://github.com/websockets/ws) + [MongoDB](https://www.mongodb.com/) ...
 
 ### Prerequisites
 
