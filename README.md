@@ -2,7 +2,7 @@
 
 # WIBASE-API
 
-A service that provides and handles the logic for Wibase , this project is writing in nodejs using typescript.
+A backend as service application, writting in Nodejs + Typescript + MongoDB
 
 
 ## Live reloading and debug
@@ -45,7 +45,4 @@ To buil the application:
 npm run build
 ```
 
----
-#### Todo
- * Add Websocket.io for real time data
 

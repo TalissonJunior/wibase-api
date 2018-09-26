@@ -7,7 +7,7 @@
             "request": "launch",
             "cwd": "${workspaceRoot}",
             "preLaunchTask": "compile",
-            "program": "${workspaceRoot}/src/index.ts",
+            "program": "${workspaceRoot}/src/server.ts",
             "outFiles": [
               "${workspaceRoot}/.tmp/bundle.js"
             ],

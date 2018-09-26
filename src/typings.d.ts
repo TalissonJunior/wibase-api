@@ -5,7 +5,16 @@ interface StorageResponse {
 }
 
 interface AppSettings {
-    ConnectionStrings: any; 
+    ConnectionStrings: any;
+}
+
+interface StorageConnection {
+    server: string,
+    port: number,
+    database: string,
+    user: string,
+    password: string,
+    dialect: string
 }
 
 // Responses

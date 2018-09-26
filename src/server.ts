@@ -1,6 +1,7 @@
 import app from './app';
 import * as http from 'http';
 import { Network, Log } from './business/utils';
+import * as WebSocket from 'ws';
 
 class Server {
     port: boolean | string | number;
@@ -15,10 +16,28 @@ class Server {
         this.port = this._normalizePort(process.env.PORT || 3000);
         app.set('port', this.port);
 
+        //initialize a simple http server
         this.server = http.createServer(app);
-        this.server.listen(this.port);
+
+        //initialize the WebSocket server instance
+        const wss = new WebSocket.Server({ server: this.server });
+
+        wss.on('connection', (ws: WebSocket) => {
+
+            //connection is up, let's add a simple simple event
+            ws.on('message', (message: string) => {
+
+                //log the received message and send it back to the client
+                ws.send(`Hello, you sent -> ${message}`);
+            });
+
+            ws.send("Connected to wibase!");
+        });
+
         this.server.on('error', this.onError);
         this.server.on('listening', this.onListening);
+
+        this.server.listen(this.port);
     }
 
     onError(error: NodeJS.ErrnoException): void {

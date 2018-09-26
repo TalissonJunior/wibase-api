@@ -1,7 +1,7 @@
 {
   "name": "wibase-api",
   "version": "1.0.0",
-  "description": "A backend as service application, that managers project, using the database tha5 user configs",
+  "description": "A backend as service application, using Nodejs + Typescript + MongoDB",
   "private": true,
   "directories": {
     "test": "tests"
@@ -22,10 +22,9 @@
   "author": "Talisson Junior",
   "license": "MIT",
   "devDependencies": {
-    "@types/mysql": "^2.15.5",
     "@types/node": "^10.9.4",
-    "@types/q": "^1.5.0",
     "@types/shortid": "0.0.29",
+    "@types/ws": "^6.0.1",
     "autoprefixer": "^9.1.5",
     "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
@@ -59,8 +58,7 @@
     "express-promise": "^0.4.0",
     "helmet": "^3.13.0",
     "morgan": "^1.9.0",
-    "mysql": "^2.16.0",
-    "q": "^1.5.1",
-    "shortid": "^2.2.13"
+    "shortid": "^2.2.13",
+    "ws": "^6.0.0"
   }
 }

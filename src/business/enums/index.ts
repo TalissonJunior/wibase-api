@@ -1,3 +1,3 @@
 export { Colors } from './colors.enum';
-export { ErrorResponseCode } from './errorResponseCode.enum';
-export { DatabaseErrors } from './databaseErros.enum';
+export { ErrorResponseCode } from './error-response-code.enum';
+export { DatabaseErrors } from './database-erros.enum';

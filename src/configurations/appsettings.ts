@@ -5,7 +5,8 @@ export const AppSettings: AppSettings = {
             port: "3306",
             database: "wibase",
             user: "root",
-            password: "root"
+            password: "root",
+            dialect: 'mysql'
         }
     }
 }
