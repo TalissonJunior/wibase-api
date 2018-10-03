@@ -26,6 +26,7 @@ class Server {
 
         wss.on('connection', (ws: WebSocket, req: http.IncomingMessage) => {
             
+            console.log(req.url)
             //connection is up, let's add a simple simple event
             ws.on('message', (message: string) => {
 
