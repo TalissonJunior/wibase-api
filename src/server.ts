@@ -2,11 +2,13 @@ import app from './app';
 import * as http from 'http';
 import { Network, Log } from './business/utils';
 import * as WebSocket from 'ws';
+import { httpEventEmitter } from './business/const/http-event-emitter.const';
 
 class Server {
     port: boolean | string | number;
     server: http.Server = null;
     network: Network = new Network();
+    websockets: any = {};
 
     constructor() {
         this.config();
@@ -20,10 +22,10 @@ class Server {
         this.server = http.createServer(app);
 
         //initialize the WebSocket server instance
-        const wss = new WebSocket.Server({ server: this.server });
+        const wss = new WebSocket.Server({ server: this.server, path: "/wibase" });
 
-        wss.on('connection', (ws: WebSocket) => {
-
+        wss.on('connection', (ws: WebSocket, req: http.IncomingMessage) => {
+            
             //connection is up, let's add a simple simple event
             ws.on('message', (message: string) => {
 
@@ -31,6 +33,10 @@ class Server {
                 ws.send(`Hello, you sent -> ${message}`);
             });
 
+            httpEventEmitter.on('post', () => {
+               // ws.emit()
+            });
+            
             ws.send("Connected to wibase!");
         });
 

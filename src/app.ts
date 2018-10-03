@@ -9,7 +9,7 @@ import * as cors from 'cors';
 import * as compression from 'compression';
 
 import { attachControllers } from '@decorators/express';
-import { ViewController} from './controller/controllers';
+import { ViewController, ProjectController, WibaseController} from './controller/controllers';
 
 class App {
 
@@ -43,7 +43,7 @@ class App {
 
         // cors
         this.express.use((req, res, next) => {
-            res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
+            res.setHeader('Access-Control-Allow-Origin','http://localhost:8080');
             res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
             res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Access-Control-Allow-Credentials');
             res.header('Access-Control-Allow-Credentials', 'true');
@@ -55,7 +55,7 @@ class App {
     routes(): void {
         var router: express.Router = express.Router();
 
-        attachControllers(router, [ViewController]);
+        attachControllers(router, [ViewController, WibaseController, ProjectController]);
         this.express.use('/', router);
     }
 

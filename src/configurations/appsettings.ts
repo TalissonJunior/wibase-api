@@ -1,12 +1,14 @@
+import { Dialect } from "../business/enums/dialect.enum";
+
 export const AppSettings: AppSettings = {
     ConnectionStrings: {
         DefaultConnection:{
             server: "localhost",
-            port: "3306",
+            port: "27017",
             database: "wibase",
-            user: "root",
-            password: "root",
-            dialect: 'mysql'
+            user: "",
+            password: "",
+            dialect: Dialect.MONGODB
         }
     }
 }
