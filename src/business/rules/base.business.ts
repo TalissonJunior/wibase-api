@@ -2,7 +2,7 @@ import { BaseRepository } from "../../repository/repositories/base.repository";
 
 export class BaseBusiness<TRepository extends BaseRepository> {
 
-    constructor(private repository: TRepository) { }
+    constructor(protected repository: TRepository) { }
 
     createCollection(collectionName: string): Promise<any> {
         return this.repository.createCollection(collectionName);

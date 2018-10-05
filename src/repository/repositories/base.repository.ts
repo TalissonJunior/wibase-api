@@ -76,7 +76,7 @@ export class BaseRepository {
             this.connection.then((client) => {
                 const db = client.db(this._storageConnection.database);
 
-                db.collection(collectionName).find((err, dbs) => {
+                db.collection(collectionName).find({}).toArray((err, dbs) => {
                     if (err) {
                         reject(err);
                     }
