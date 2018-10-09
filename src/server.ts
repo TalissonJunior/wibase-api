@@ -3,12 +3,14 @@ import * as http from 'http';
 import { Network, Log } from './business/utils';
 import * as WebSocket from 'ws';
 import { httpEventEmitter } from './business/const/http-event-emitter.const';
+import { ProjectBusiness } from './business/rules';
+import { ProjectRepository } from './repository/repositories';
 
 class Server {
     port: boolean | string | number;
     server: http.Server = null;
     network: Network = new Network();
-    websockets: any = {};
+    websockets: WebSocket[] = [];
 
     constructor() {
         this.config();
@@ -25,8 +27,9 @@ class Server {
         const wss = new WebSocket.Server({ server: this.server, path: "/wibase" });
 
         wss.on('connection', (ws: WebSocket, req: http.IncomingMessage) => {
-            
-            console.log(req.url)
+
+            this.websockets.push(ws);
+
             //connection is up, let's add a simple simple event
             ws.on('message', (message: string) => {
 
@@ -35,9 +38,24 @@ class Server {
             });
 
             httpEventEmitter.on('post', () => {
-               // ws.emit()
+                // ws.emit()
             });
-            
+
+            httpEventEmitter.on('console', () => {
+                var business = new ProjectBusiness(new ProjectRepository());
+                business.listAllProjects().then((response) => {
+                    this.websockets.forEach((websocket) => {
+                        websocket.emit(JSON.stringify(response));
+                    });
+                })
+                .catch((error) => {
+                    this.websockets.forEach((websocket) => {
+                        websocket.emit(JSON.stringify({error: error}));
+                    });
+                })
+               
+            });
+
             ws.send("Connected to wibase!");
         });
 
